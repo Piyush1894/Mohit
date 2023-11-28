@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-…" crossorigin="anonymous" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body
+    style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(https://i.pinimg.com/originals/1d/02/f2/1d02f2653e6dae9da39631fca2e1cec3.jpg);background-size: cover;">
+    <nav class="navbar navbar-expand-lg text-dark navbar-dark shadow fixed-top" id="navBackground">
+        <div class="container-fluid px-4  text-light">
+            <a class="navbar-brand  text-secondary" href="#">
+                <h1 class="h2 fw-bolder"><span style="color: orange;">Yummy</span> Yard <i class="fa fa-shopping-cart"
+                        style="color:orange;" aria-hidden="true"></i></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-light">
+
+                    <li class="nav-link ms-2">
+                        <form class="d-flex position-relative">
+                            <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline text-light" type="submit"><i
+                                    class="fa fa-search position-absolute"
+                                    style="color: orange;right: 40px; top: 0px;border-left: 1px solid black;height:38px;padding-top: 10px;padding-left: 10px;"
+                                    aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </li>
+
+                    <li class="nav-item text-dark ms-2">
+                        <a class="nav-link active fs-5  text-dark" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item text-dark ms-2">
+                        <a class="nav-link fs-5  text-dark" href="#">Product</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link disabled text-dark fs-5" href="#" tabindex="-1"
+                            aria-disabled="true">Gallery</a>
+                    </li>
+                    <li class="nav-item dropdown text-dark ms-2">
+                        <a class="nav-link dropdown-toggle fs-5 text-dark" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item fs-5 text-dark" href="#">Admin </a></li>
+                            <hr>
+                            <li><a class="dropdown-item fs-5 text-dark" href="login.html">User</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid " style="margin-top: 150px;">
+        <div class="container">
+            <div class="m-auto p-4 shadow" style="width: 400px;border-radius: 25px;background-color: white;">
+                <form class="form-control" onsubmit="return validate()">
+                    <h4 class="m-auto text-center">User Registration</h4>
+                    <div class="p-4">
+                        <label for="" class="form-label fs-5" style="width: 30%;">Name</label><span
+                            id="ndisplay"></span>
+                        <input type="text" id="name" onchange="checkName()" onclick="checkName()" name="name"
+                            class="form-control d-block ps-5">
+                        <label for="" class="form-label fs-5" style="width: 30%;">Email</label><span
+                            id="edisplay"></span>
+                        <input type="text" name="email" id="email" onchange="checkEmail()" onclick="checkEmail()"
+                            class="form-control">
+                        <label for="" class="form-label fs-5" style="width: 50%;">Mobile no</label><span
+                            id="mdisplay"></span>
+                        <input type="text" name="mobile" id="mobile" onchange="checkMobile()" onclick="checkMobile()"
+                            class="form-control">
+                        <label for="" class="form-label fs-5" style="width: 40%;">Password</label><span
+                            id="password-strength"></span> <br>
+                        <input type="password" id="password" name="password" style="width: 84%;"
+                            class="d-inline-block form-control float-start" onchange="passwordstrength()"
+                            onclick="passwordstrength()">
+                        <div class="mt-2 d-inline-block">
+                            <input type="checkbox" class="d-none" id="showPassword"
+                                onchange="togglePasswordVisibility()">
+                            <label for="showPassword"> <i
+                                    class="fa fa-eye border border-1 rounded-2 border-secondary ms-2 text-secondary p-1"
+                                    style="display: none;" id="open"></i></label>
+                            <label for="showPassword"> <i
+                                    class="fa fa-eye-slash border border-1 rounded-2 border-secondary ms-2 text-secondary p-1"
+                                    id="close"></i></label>
+                        </div>
+                        <label for="" class="form-label fs-5">Confirm Password</label> <br><span
+                        id="password-mismatch"></span>
+                        <input type="password" id="cpassword" onchange="passcheck()" onclick="passcheck()" style="width: 84%;"
+                            class="d-inline-block form-control float-start">
+                        <div class="mt-2">
+                            <input type="checkbox" class="d-none" id="showPassword2"
+                                onchange="togglePasswordVisibility2()">
+                            <label for="showPassword2"> <i
+                                    class="fa fa-eye border border-1 rounded-2 border-secondary ms-2 text-secondary p-1"
+                                    style="display: none;" id="open2"></i></label>
+                            <label for="showPassword2"> <i
+                                    class="fa fa-eye-slash border border-1 rounded-2 border-secondary ms-2 text-secondary p-1"
+                                    id="close2"></i></label>
+                        </div>
+                        <input type="submit" style="background-color: #6AA355;"
+                            class="btn btn-success form-control mt-3" name="submit" value="Submit" id="">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validate()
+        {
+            var nameResult = checkName();
+            var emailResult = checkEmail();
+            var mobileResult = checkMobile();
+            var passworfun =passwordstrength();
+            var cpasswordResult = checkCpassword();
+
+            var ndisplay = document.getElementById("ndisplay");
+            var edisplay = document.getElementById("edisplay");
+            var mdisplay = document.getElementById("mdisplay");
+            var cpdisplay = document.getElementById("password-mismatch");
+
+            if(!nameResult || !emailResult || !mobileResult || !cpasswordResult || !passworfun){
+
+                return false;
+            }
+            return true;
+
+        }
+
+        function passcheck() {
+            var password = document.getElementById("password").value;
+            var cpassword = document.getElementById("cpassword").value;
+
+            if (password !== cpassword) {
+                document.getElementById("password-mismatch").textContent = "Passwords do not match";
+                return false;
+            } else {
+                document.getElementById("password-mismatch").textContent = "";
+            }
+            return true;
+        }
+
+        function passwordstrength() {
+            var password = document.getElementById("password").value;
+            var strengthBadge = document.getElementById("password-strength");
+            var strength = 0;
+            if (password.match(/[a-z]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[A-Z]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[0-9]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[$@#&!]+/)) {
+                strength += 1;
+            }
+            if (strength === 0) {
+                strengthBadge.style.backgroundColor = "";
+                strengthBadge.style.color = "red";
+                strengthBadge.textContent = "password required";
+                return false;
+            } else if (strength <= 2) {
+                strengthBadge.style.color = "white";
+                strengthBadge.style.backgroundColor = "red";
+                strengthBadge.textContent = "Weak";
+            } else if (strength <= 3) {
+                strengthBadge.style.color = "white";
+                strengthBadge.style.backgroundColor = "yellow";
+                strengthBadge.textContent = "Moderate";
+            } else {
+                strengthBadge.style.color = "white";
+                strengthBadge.style.backgroundColor = "green";
+                strengthBadge.textContent = "Strong";
+            }
+            return true;
+        }
+
+        function checkName() {
+            var name = document.getElementById("name");
+            var ndisplay = document.getElementById("ndisplay");
+            if (name.value.trim() == "") {
+                ndisplay.innerHTML = "name required";
+                ndisplay.style.color = "red";
+                return false;
+            } else {
+                ndisplay.innerHTML = "";
+                var nameInput = document.getElementById('name').value;
+                var nameValue = nameInput.value;
+                var isValid = /^[A-Za-z ]+$/.test(nameInput);
+                var nnn = document.getElementById('ndisplay');
+
+                if (!isValid) {
+                    nnn.style.display = 'inline-block';
+                    nnn.style.color = 'red';
+                    nnn.innerHTML = ("Invalid Name");
+                    return false;
+                } else {
+                    nnn.style.display = 'none';
+
+                    nnn.innerHTML = ("");
+                    return true;
+                }
+            }
+        }
+
+
+        function checkEmail() {
+            var email = document.getElementById("email");
+            var edisplay = document.getElementById("edisplay");
+            if (email.value.trim() == "") {
+                edisplay.innerHTML = "email required";
+                edisplay.style.color = "red";
+                return false;
+            } else {
+                edisplay.innerHTML = "";
+                var emailInput = document.getElementById('email');
+                var emailValue = emailInput.value;
+                var eee = document.getElementById('edisplay');
+
+                if (!emailValue.includes('@gmail.com')) {
+                    eee.style.display = 'inline-block';
+                    eee.style.color = 'red';
+                    eee.innerHTML = ("Invalid Email");
+                    return false;
+                } else {
+                    eee.style.display = 'none';
+                    eee.innerHTML = ("");
+                }
+
+                return true;
+            }
+        }
+
+
+        function checkMobile() {
+            var mobile = document.getElementById("mobile");
+
+            var mdisplay = document.getElementById("mdisplay");
+            if (mobile.value.trim() == "") {
+                mdisplay.innerHTML = "mobile.no required";
+                mdisplay.style.color = "red";
+                return false;
+            } else {
+                mdisplay.innerHTML = "";
+                var mobile = document.getElementById("mobile");
+                var mdisplay = document.getElementById("mdisplay");
+                var mobileRegex = /^[7896]\d{9}$/;
+
+                if (mobile.value.trim() === "" || !mobileRegex.test(mobile.value.trim())) {
+                    mdisplay.innerHTML = "Enter a valid 10-digit mobile number starting with 7, 9, 8, or 6";
+                    mdisplay.style.color = "red";
+                    return false;
+                } else {
+                    mdisplay.innerHTML = "";
+                    return true;
+                }
+            }
+        }
+
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var showPasswordCheckbox = document.getElementById("showPassword");
+            var openIcon = document.getElementById("open");
+            var closeIcon = document.getElementById("close");
+
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+                openIcon.style.display = "block";
+                closeIcon.style.display = "none";
+            } else {
+                passwordInput.type = "password";
+                openIcon.style.display = "none";
+                closeIcon.style.display = "block";
+            }
+        }
+        function togglePasswordVisibility2() {
+            var passwordInput = document.getElementById("cpassword");
+            var showPasswordCheckbox = document.getElementById("showPassword2");
+            var openIcon = document.getElementById("open2");
+            var closeIcon = document.getElementById("close2");
+
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+                openIcon.style.display = "block";
+                closeIcon.style.display = "none";
+            } else {
+                passwordInput.type = "password";
+                openIcon.style.display = "none";
+                closeIcon.style.display = "block";
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

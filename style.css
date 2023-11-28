@@ -1,0 +1,25 @@
+#navBackground{
+    background-color: white;
+    color: black !important;
+    font-family: candara;
+}
+#firstOrder{
+    background-color: whitesmoke;
+}
+#firstOrder img{
+    border-radius: 50%;
+}
+#topBrand{
+    background-color: white;
+}
+#topBrand img{
+    border-radius: 30px;
+}
+#topBrand a{
+    text-decoration: none;
+    color: white;
+}
+#deliveryRestaurants a{
+    color: white;
+    text-decoration: none;
+}

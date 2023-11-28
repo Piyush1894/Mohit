@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="r.css">
+    <script>
+        function validate() {
+            var nameResult = checkName();
+            var fnameResult = checkFname();
+            var emailResult = checkEmail();
+            var mobileResult = checkMobile();
+            var passwordResult = checkPassword();
+            var cpasswordResult = checkCpassword();
+
+            var ndisplay = document.getElementById("ndisplay");
+            var fdisplay = document.getElementById("fdisplay");
+            var edisplay = document.getElementById("edisplay");
+            var mdisplay = document.getElementById("mdisplay");
+            var pdisplay = document.getElementById("pdisplay");
+            var cpdisplay = document.getElementById("cpdisplay");
+
+            if (!nameResult || !fnameResult || !emailResult || !mobileResult || !passwordResult || !cpasswordResult) {
+                // Show error messages for all fields
+                if (!nameResult) ndisplay.innerHTML = "name required";
+                if (!fnameResult) fdisplay.innerHTML = "father name required";
+                if (!emailResult) edisplay.innerHTML = "email required";
+                if (!mobileResult) mdisplay.innerHTML = "mobile number required";
+                if (!passwordResult) pdisplay.innerHTML = "password required";
+                if (!cpasswordResult) cpdisplay.innerHTML = "password required";
+
+                return false; // Prevent form submission
+            }
+
+            // If all validations pass, the form will be submitted
+            return true;
+        }
+
+        function checkName() {
+            var name = document.getElementById("name");
+            var ndisplay = document.getElementById("ndisplay");
+            if (name.value.trim() == "") {
+                ndisplay.innerHTML = "name required";
+                ndisplay.style.color = "red";
+                return false;
+            } else {
+                ndisplay.innerHTML = "";
+                var nameInput = document.getElementById('name').value;
+                var nameValue = nameInput.value;
+                var isValid = /^[A-Za-z ]+$/.test(nameInput);
+                var nnn = document.getElementById('ndisplay');
+
+                if (!isValid) {
+                    nnn.style.display = 'inline-block';
+                    nnn.style.color = 'red';
+                    nnn.innerHTML = ("Invalid Name");
+                    return false;
+                } else {
+                    nnn.style.display = 'none';
+
+                    nnn.innerHTML = ("");
+                    return true;
+                }
+            }
+        }
+
+        function checkFname() {
+            var c = checkName();
+            if (c) {
+                var fname = document.getElementById("fname");
+                var fdisplay = document.getElementById("fdisplay");
+                if (fname.value.trim() == "") {
+                    fdisplay.innerHTML = "father name required";
+                    fdisplay.style.color = "red";
+                    return false;
+                } else {
+                    fdisplay.innerHTML = "";
+                    var nameInput = document.getElementById('fname').value;
+                    var nameValue = nameInput.value;
+                    var isValid = /^[A-Za-z ]+$/.test(nameInput);
+                    var nnn = document.getElementById('fdisplay');
+
+                    if (!isValid) {
+                        nnn.style.display = 'inline-block';
+                        nnn.style.color = 'red';
+                        nnn.innerHTML = ("Invalid Name");
+                        return false;
+                    } else {
+                        nnn.style.display = 'none';
+                        nnn.innerHTML = ("");
+                        return true;
+                    }
+                }
+            }
+            else {
+                var name1 = document.getElementById("name");
+                checkName();
+                name1.focus();
+                return false;
+            }
+        }
+
+        function checkEmail() {
+            var c = checkFname();
+            if (c) {
+                var email = document.getElementById("email");
+                var edisplay = document.getElementById("edisplay");
+                if (email.value.trim() == "") {
+                    edisplay.innerHTML = "email required";
+                    edisplay.style.color = "red";
+                    return false;
+                } else {
+                    edisplay.innerHTML = "";
+                    var emailInput = document.getElementById('email');
+                    var emailValue = emailInput.value;
+                    var eee = document.getElementById('edisplay');
+
+                    if (!emailValue.includes('@gmail.com')) {
+                        eee.style.display = 'inline-block';
+                        eee.style.color = 'red';
+                        eee.innerHTML = ("Invalid Email");
+                        return false;
+                    } else {
+                        eee.style.display = 'none';
+
+                        eee.innerHTML = ("");
+                    }
+
+                    return true;
+                }
+            }
+            else {
+                var name = document.getElementById("name");
+                var name1 = document.getElementById("fname");
+
+                if (!checkName()) {
+                    name.focus();
+                }
+                else if (!checkFname()) {
+                    name1.focus();
+                }
+                return false;
+            }
+        }
+
+        function checkMobile() {
+            var c = checkEmail();
+            if (c) {
+                var mobile = document.getElementById("mobile");
+
+                var mdisplay = document.getElementById("mdisplay");
+                if (mobile.value.trim() == "") {
+                    mdisplay.innerHTML = "mobile number required";
+                    mdisplay.style.color = "red";
+                    return false;
+                } else {
+                    mdisplay.innerHTML = "";
+                    var mobile = document.getElementById("mobile");
+                    var mdisplay = document.getElementById("mdisplay");
+                    var mobileRegex = /^[7896]\d{9}$/;
+
+                    if (mobile.value.trim() === "" || !mobileRegex.test(mobile.value.trim())) {
+                        mdisplay.innerHTML = "Enter a valid 10-digit mobile number starting with 7, 9, 8, or 6";
+                        mdisplay.style.color = "red";
+                        return false;
+                    } else {
+                        mdisplay.innerHTML = "";
+                        return true;
+                    }
+                }
+            }
+            else {
+                var name = document.getElementById("name");
+                var name1 = document.getElementById("fname");
+                var email = document.getElementById("email");
+                if (!checkName()) {
+                    name.focus();
+                }
+                else if (!checkFname()) {
+                    name1.focus();
+                }
+                else if (!checkEmail()) {
+                    email.focus();
+                }
+                return false;
+            }
+        }
+
+        function checkPassword() {
+            var c = checkMobile();
+            if (c) {
+                var password = document.getElementById("password");
+                var pdisplay = document.getElementById("pdisplay");
+                if (password.value.trim() == "") {
+                    pdisplay.innerHTML = "password required";
+                    pdisplay.style.color = "red";
+                    return false;
+                } else {
+                    pdisplay.innerHTML = "";
+                    return true;
+                }
+            }
+            else {
+                var name = document.getElementById("name");
+                var name1 = document.getElementById("fname");
+                var email = document.getElementById("email");
+                var mobile = document.getElementById("mobile");
+                if (!checkName()) {
+                    name.focus();
+                }
+                else if (!checkFname()) {
+                    name1.focus();
+                }
+                else if (!checkEmail()) {
+                    email.focus();
+                }
+                else if (!checkMobile()) {
+                    mobile.focus();
+                }
+                return false;
+            }
+        }
+
+        function checkCpassword() {
+            c = checkPassword();
+            if (c) {
+                var cpassword = document.getElementById("cpassword");
+                var cpdisplay = document.getElementById("cpdisplay");
+                if (cpassword.value.trim() == "") {
+                    cpdisplay.innerHTML = "password required";
+                    cpdisplay.style.color = "red";
+                    return false;
+                } else {
+                    cpdisplay.innerHTML = "";
+                    var password = document.getElementById("password");
+                    return true;
+                }
+            }
+            else {
+                var name = document.getElementById("name");
+                var name1 = document.getElementById("fname");
+                var email = document.getElementById("email");
+                var mobile = document.getElementById("mobile");
+                var pass = document.getElementById("password");
+                if (!checkName()) {
+                    name.focus();
+                }
+                else if (!checkFname()) {
+                    name1.focus();
+                }
+                else if (!checkEmail()) {
+                    email.focus();
+                }
+                else if (!checkMobile()) {
+                    mobile.focus();
+                }
+                else if (!checkPassword()) {
+                    pass.focus();
+                }
+
+            }
+            if (true) {
+                var pass1 = document.getElementById("password");
+                var pass2 = document.getElementById("cpassword");
+                var aaa = document.getElementById("cpdisplay");
+
+                if (pass1.value == pass2.value) {
+                    aaa.innerHTML = "";
+                    return true;
+                } else {
+                    aaa.innerHTML = "Password Not Match";
+                    return false;
+                }
+            }
+            return false;
+        }
+        function checkpasscom(){
+            var password = document.getElementById("password").value;
+                var cpassword = document.getElementById("cpassword").value;
+                var cpdisplay = document.getElementById("cpdisplay");
+
+                if (password.trim() === cpassword.trim()) {
+                    cpdisplay.innerHTML = "";
+                    return true;
+                } else {
+                    cpdisplay.innerHTML = "Password Not Match";
+                    return false;
+                }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="contain1">
+            <h1>Registration Form</h1>
+            <form action="" onsubmit="return validate()">
+                <div id='div1'>
+                    <label>Username</label><br>
+                    <input onclick="checkName()" onfocus="checkName()" onkeyup="checkName()" type="text" id="name"
+                        name="name" placeholder="Enter your name">
+                    <span style="color: red;" id="ndisplay">*</span>
+                </div>
+                <div id="div2">
+                    <label>Father name</label><br>
+                    <input onclick="checkFname()" onkeyup="checkFname()" type="text" id="fname" name="fname"
+                        placeholder="Enter your Father name">
+                    <span style="color: red;" id="fdisplay">*</span>
+                </div>
+                <div id="div3">
+                    <label>Email</label><br>
+                    <input onclick="checkEmail()" onkeyup="checkEmail()" type="email" id="email" name="email"
+                        placeholder="Enter Email">
+                    <span style="color: red;" id="edisplay">*</span>
+                </div>
+                <div id="div4">
+                    <label>Contact</label><br>
+                    <input onclick="checkMobile()" onkeyup="checkMobile()" type="text" id="mobile" name="mobile"
+                        maxlength="10" placeholder="Enter 10-digit Mobile Number">
+                    <span style="color: red;" id="mdisplay">*</span>
+                </div>
+                <div id="div5">
+                    <label>Password</label><br>
+                    <input onclick="checkPassword()" onkeyup="checkPassword()" id="password" type="password"
+                        name="password" placeholder="Enter Password">
+                    <span style="color: red;" id="pdisplay">*</span>
+                </div>
+                <div id="div6">
+                    <label>Confirm Password</label><br>
+                    <input onclick="checkCpassword()" onkeyup="checkpasscom()" id="cpassword" type="password"
+                        name="cpassword" placeholder="Enter Confirm Password">
+                    <span style="color: red;" id="cpdisplay">*</span>
+                </div>
+                <div id="div7">
+                    <input type="submit" value="Register" id="Signup">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

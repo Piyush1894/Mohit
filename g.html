@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {
+                font-family: 'Lato', arial, sans-serif;
+                margin: 0;
+            }
+
+            .content-container {
+                position: relative;
+                z-index: 0;
+                padding-left: 80px;
+                padding-top: 15px;
+                margin: 0 auto;
+                overflow: hidden;
+                transition: all 300ms ease-in-out;
+            }
+            #cartCount{
+
+            }
+
+
+            .slideout-sidebar {
+                position: fixed;
+                top: 0;
+                left: -190px;
+                z-index: 0;
+                width: 150px;
+                height: 100%;
+                padding: 20px;
+                background-color: #212121;
+                transition: all 300ms ease-in-out;
+            }
+
+            .slideout-sidebar ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .slideout-sidebar ul li {
+                cursor: pointer;
+                padding: 18px 0;
+                border-bottom: 1px solid rgba(244,244,244,0.4);
+                color: rgba(244,244,244,0.7);
+            }
+
+            .slideout-sidebar ul li:last-child {
+                border-bottom: 0;
+            }
+
+            .slideout-sidebar ul li:hover {
+                color: rgba(244,244,244,1);
+            }
+
+
+            #menu-toggle {
+                display: none;
+            }
+
+            .menu-icon {
+                position: absolute;
+                top: 18px;
+                left: 30px;
+                font-size: 24px;
+                z-index: 1;
+                transition: all 300ms ease-in-out;
+            }
+
+
+
+            /*-- The Magic --*/
+            #menu-toggle:checked ~ .slideout-sidebar {
+                left: 0px;
+            }
+
+            #menu-toggle:checked + .menu-icon {
+                left: 210px;
+            }
+
+            #menu-toggle:checked ~ .content-container {
+                padding-left: 250px;
+            }
+
+            /* -- Media Queries -- */
+
+            @media (max-width: 991px) {
+
+                .content-container {
+                    max-width: 480px;
+                }
+
+            }
+
+            @media (max-width: 767px) {
+
+                .content-container {
+                    max-width: 100%;
+                    margin: 30px auto 0;
+                }
+
+                #menu-toggle:checked ~ .content-container {
+                    padding-left: 0;
+                }
+
+                .slideout-sidebar ul {
+                    text-align: center;
+                    max-width: 200px;
+                    margin: 30px auto 0;
+                }
+
+                .menu-icon {
+                    left: 20px
+                }
+
+                #menu-toggle:checked ~ .slideout-sidebar {
+                    width: 100%;
+                }
+
+                #menu-toggle:checked + .menu-icon {
+                    left: 87%;
+                    color: #fafafa;
+                }
+
+                @media screen
+                and (max-width: 736px)
+                and (orientation: landscape) {
+
+                    .slideout-sidebar {
+                        padding: 0;
+                    }
+
+                    .slideout-sidebar ul {
+                        max-width: 100%;
+                        margin: 60px auto 0;
+                    }
+
+                    .slideout-sidebar ul li {
+                        display: inline-block;
+                        border-bottom: 0;
+                        width: 72px;
+                        padding: 18px 24px;
+                        margin: 0 6px 12px;
+                        color: #ffffff;
+                        background-color: #777;
+                    }
+
+                }
+
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <input type="checkbox" id="menu-toggle" checked />
+        <label for="menu-toggle" class="menu-icon"><i class="fa fa-bars"></i></label>
+        <div class="content-container" style="position: relative">
+            <div>
+                <h1 class="h2 fw-bolder d-inline"><span style="color: orange;">Yummy</span> Yard <i class="fa fa-shopping-cart"
+                                                                                                    style="color:orange;" aria-hidden="true"></i></h1>
+                <div href="" class="text-dark  nav-link rounded-3" style="position: fixed; top: 0; right: 0; background-color: #fff; padding-right: 10px; color: white; display: inline-flex;">
+                    <div class="m-0 p-0"><span class="fw-nornal ms-3 m-0 p-0 " style="font-size: 12px" id="cart"></span>
+
+                        <div>
+                            <i class="fa fa-shopping-cart fs-3 m-0 p-0"></i>
+                            <span style="margin-left: 5px; margin-top: 2px;">₹<span id="totalamount">0</span></span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="row row-cols-lg-3 my-5 ps-0 p-3 row-cols-md-2 row-cols-1">
+                
+                <div class="col ps-0 my-3 p-2 rounded-3 text-center">
+                    <div class="p-4 shadow rounded-3 bg-success text-light h-100">
+                        <img src="https://b.zmtcdn.com/data/pictures/1/20358981/70d890bb6ca5ae6f5bc21b3f500e072a_o2_featured_v2.jpg" alt="" class="img-fluid rounded-3" style="width:270px;height: 200px">
+                        <h4 class=" text-light  pt-2">Dominos</h4>
+                        <div class="text-start d-inline-block float-start">
+                            <span class=" text-light text-center">Pizza</span>
+                            <h4>Price : <span>300</span></h4>
+                        </div>
+                        <div class="text-start d-inline-block float-end">
+                            <input type="checkbox" id="check1" onchange="checkAll()" class="checkcheck d-none">
+                            <label for="check1" class="add-btn btn mt-2 btn-outline-light">Add To Cart</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col ps-0 my-3 p-2 rounded-3 text-center">
+                    <div class="p-4 shadow rounded-3 bg-success text-light h-100">
+                        <img src="https://b.zmtcdn.com/data/pictures/7/18452167/e2ad7b4cce99eb65dd767356475d4726_o2_featured_v2.jpg" alt="" class="img-fluid rounded-3" style="width:270px;height: 200px">
+                        <h4 class=" text-light  pt-2">Prashant  Nashta Corner</h4>
+                        <div class="text-start d-inline-block float-start">
+                            <span class=" text-light text-center">Dosa</span>
+                            <h4>Price : <span>200</span></h4>
+                        </div>
+                        <div class="text-start d-inline-block float-end">
+                            <input type="checkbox" id="check2" onchange="checkAll()" class="checkcheck d-none">
+                            <label for="check2" class="add-btn btn mt-2 btn-outline-light">Add To Cart</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col ps-0 my-3 p-2 rounded-3 text-center">
+                    <div class="p-4 shadow rounded-3 bg-success text-light h-100">
+                        <img src="https://b.zmtcdn.com/data/dish_photos/8a5/6f33dd8cfff8c3ec5b8def5131e5e8a5.jpg?fit=around|130:130&amp;crop=130:130;*,*" alt="" class="img-fluid rounded-3" style="width:270px;height: 200px">
+                        <h4 class=" text-light  pt-2">Dominos</h4>
+                        <div class="text-start d-inline-block float-start">
+                            <span class=" text-light text-center">Peppy Paneer Pizza</span>
+                            <h4>Price : <span>400</span></h4>
+                        </div>
+                        <div class="text-start d-inline-block float-end">
+                            <input type="checkbox" id="check3" onchange="checkAll()" class="checkcheck d-none">
+                            <label for="check3" class="add-btn btn mt-2 btn-outline-light">Add To Cart</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col ps-0 my-3 p-2 rounded-3 text-center">
+                    <div class="p-4 shadow rounded-3 bg-success text-light h-100">
+                        <img src="https://b.zmtcdn.com/data/pictures/chains/5/19806005/35bf8c5f10453f9dcd430076c63160b5.jpeg?output-format=webp&amp;fit=around|771.75:416.25&amp;crop=771.75:416.25;*,*" alt="" class="img-fluid rounded-3" style="width:270px;height: 200px">
+                        <h4 class=" text-light  pt-2">Samosa King</h4>
+                        <div class="text-start d-inline-block float-start">
+                            <span class=" text-light text-center">Samosa</span>
+                            <h4>Price : <span>50</span></h4>
+                        </div>
+                        <div class="text-start d-inline-block float-end">
+                            <input type="checkbox" id="check4" onchange="checkAll()" class="checkcheck d-none">
+                            <label for="check4" class="add-btn btn mt-2 btn-outline-light">Add To Cart</label>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+        <div class="slideout-sidebar">
+            <ul>
+                <li><a href="#" style="text-decoration: none;color: rgba(244,244,244,0.7);">Product</a></li>
+                <li><a href="#" style="text-decoration: none;color: rgba(244,244,244,0.7);">Profile</a></li>
+                <li><a href="#" style="text-decoration: none;color: rgba(244,244,244,0.7);">Cart</a></li>
+                <li><a href="#" style="text-decoration: none;color: rgba(244,244,244,0.7);">Feedback</a></li>
+            </ul>
+        </div>
+        <script>
+            var check = document.getElementsByClassName("checkcheck");
+             var totalAmountElement = document.getElementById("totalamount");
+             totalAmount += parseInt(addbtn[i].getAttribute("data-id"));
+             var totalAmount = 0;
+             var a = 0;
+             var addbtn = document.getElementsByClassName("add-btn");
+             var cart = document.getElementById("cart");
+         function checkAll() {
+            
+             for (var i = 0; i < check.length; i++) {
+                 if (check[i].checked) {
+                     a++;
+                     addbtn[i].innerHTML = "Remove";
+                     addbtn[i].style.backgroundColor = "transparent";
+                     addbtn[i].style.color = "white";
+                     addbtn[i].style.borderColor = "white";
+                     totalAmount += parseInt(addbtn[i].getAttribute("data-price"));
+                     totalAmountElement.innerHTML = totalAmount;
+                 } else {
+                     addbtn[i].innerHTML = "Add To Cart";
+                 }
+             }
+             if (a == 0) {
+                 cart.innerHTML = "";
+                 totalAmountElement.innerHTML="0";
+             } else {
+                 cart.innerHTML = a;
+             }
+         }
+         function  nextPage(){
+             
+             var url = "OrderController";
+             for (var i = 0; i < totalpriceallpro.length; i++) {
+                 if (totalpriceallpro[i].innerHTML != 0) {
+                     url += "?Product" + (i + 1) + "=" + encodeURIComponent(protot[i].innerHTML) + "&Price1=" + encodeURIComponent(price[i].innerText);
+                 }
+             }
+             window.location.href = url;
+         }
+     </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    </body>
+
+</html>
